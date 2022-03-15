@@ -32,6 +32,12 @@ describe('any-old-api routes', () => {
     expect(res.body).toEqual(book);
   });
 
+  it('returns a 404 if book not found', async () => {
+    const res = await request(app).get('/api/v1/books/404');
+
+    expect(res.status).toEqual(404);
+  });
+
   it('should list all books', async () => {
     const expected = await Book.getAll();
     const res = await request(app).get('/api/v1/books');
