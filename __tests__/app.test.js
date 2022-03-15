@@ -31,4 +31,11 @@ describe('any-old-api routes', () => {
 
     expect(res.body).toEqual(book);
   });
+
+  it('should list all books', async () => {
+    const expected = await Book.getAll();
+    const res = await request(app).get('/api/v1/books');
+
+    expect(res.body).toEqual(expected);
+  });
 });
