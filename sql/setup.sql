@@ -7,3 +7,10 @@ CREATE TABLE books (
     author TEXT NOT NULL, 
     published INT
 );
+
+-- INSERT INTO
+--     books (title, author, published)
+
+-- VALUES
+--     ('Kafka on the Shore', 'Haruki Murakami', 2002),
+--     ('The End of the Story', 'Lydia Davis', 1995);

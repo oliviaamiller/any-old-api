@@ -44,4 +44,31 @@ describe('any-old-api routes', () => {
 
     expect(res.body).toEqual(expected);
   });
+
+  // it('updates a book by id', async () => {
+  //   const book = await Book.insert({ title: 'The Start of the Story', author: 'Lydio Davis', published: 1992 });
+  //   const res = await request(app)
+  //     .patch(`/api/v1/books/${book.id}`)
+  //     .send({ title: 'The End of the Story', author: 'Lydia Davis', published: 1996 });
+
+  //   const expected = {
+  //     id: expect.any(String),
+  //     title: 'The End of the Story',
+  //     author: 'Lydia Davis',
+  //     published: 1996
+  //   };
+   
+  //   expect(res.body).toEqual(expected);
+  //   expect(await Book.getById(book.id)).toEqual(expected);
+  // });
+
+  it('should be able to delete a book', async () => {
+    const book = await Book.insert({ 
+      title: 'Kafka on the Shore', 
+      author: 'Haruki Murakami', 
+      published: 2002 });
+    const res = await request(app).delete(`/api/v1/books/${book.id}`);
+
+    expect(res.body).toEqual(book);
+  });
 });
