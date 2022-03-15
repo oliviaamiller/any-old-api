@@ -24,4 +24,11 @@ describe('any-old-api routes', () => {
 
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
+
+  it('should be able to get a book by id', async () => {
+    const book = await Book.insert({ title: 'Kafka on the Shore', author: 'Haruki Murakami', published: 2002 });
+    const res  = await request(app).get(`/api/v1/books/${book.id}`);
+
+    expect(res.body).toEqual(book);
+  });
 });
