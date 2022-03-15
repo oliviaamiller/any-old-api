@@ -13,5 +13,15 @@ describe('any-old-api routes', () => {
     pool.end();
   });
 
-  it
+  it('creates a book', async () => {
+    const expected = {
+      title: 'Kafka on the Shore', 
+      author: 'Haruki Murakami',
+      published: 2002
+    };
+
+    const res = await request(app).post('/api/v1/books').send(expected);
+
+    expect(res.body).toEqual({ id: expect.any(String), ...expected });
+  });
 });
