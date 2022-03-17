@@ -46,7 +46,7 @@ describe('any-old-api routes', () => {
   });
 
   it('updates a book by id', async () => {
-    const book = await Book.insert({ title: 'The Start of the Story', author: 'Lydio Davis', published: 1992 });
+    const book = await Book.insert({ title: 'The Start of the Story', author: 'Lydiio Davis', published: 1992 });
     const res = await request(app)
       .patch(`/api/v1/books/${book.id}`)
       .send({ title: 'The End of the Story', author: 'Lydia Davis', published: 1996 });
